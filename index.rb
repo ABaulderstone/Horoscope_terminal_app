@@ -25,9 +25,12 @@ end
 class HoroscopeModel
     
     attr_accessor  :name , :sign
+    attr_reader :signs_array
     def initialize(name = "default", sign = Date.today.zodiac_sign)
         @name = name
         @sign = sign
+        @signs_array = [ "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]  
+
     end
     
     def get_horoscope (sign)
@@ -89,7 +92,6 @@ class HoroscopeController
     def initialize
         @horoscopeView = HoroscopeView.new
         @horoscopeModel = HoroscopeModel.new 
-        @signs_array = [ "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]  
     end
     
     def birthday_to_sign
@@ -106,7 +108,7 @@ class HoroscopeController
         @horoscopeModel.name = @horoscopeView.get_name
         sign = @horoscopeView.get_sign
         @horoscopeView.repeat_name(@horoscopeModel.name)
-        if @signs_array.include? sign
+        if @horoscopeModel.signs_array.include? sign
             puts @horoscopeView.art.asciify(sign)
            @horoscopeModel.get_horoscope sign
         else 
