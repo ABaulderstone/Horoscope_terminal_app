@@ -5,5 +5,6 @@ At  this stage takes user input for name and sign, if sign can't be read app con
 
 
 ## Required Gems 
-Zodaic 
-HTTPary 
+* Zodaic 
+* HTTParty 
+* Artii
